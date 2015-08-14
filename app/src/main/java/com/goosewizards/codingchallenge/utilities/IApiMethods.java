@@ -11,7 +11,6 @@ import retrofit.http.Query;
  * Created by Matt on 8/13/2015.
  */
 public interface IApiMethods {
-    //    @GET("/public/v1.0/movies.json")
     @Headers("Content-Type: application/json")
     @GET("/movies.json")
     RottenResponse getMovies(
@@ -21,4 +20,9 @@ public interface IApiMethods {
       @Query("page") int page
     );
 
+    @Headers("Content-Type: application/json")
+    @GET("/lists/movies/in_theaters.json")
+    RottenResponse getInTheaters(
+        @Query("apikey") String key
+    );
 }

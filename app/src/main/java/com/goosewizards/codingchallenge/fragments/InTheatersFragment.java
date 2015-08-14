@@ -1,6 +1,5 @@
 package com.goosewizards.codingchallenge.fragments;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -8,21 +7,16 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 
 import com.goosewizards.codingchallenge.R;
 import com.goosewizards.codingchallenge.utilities.APICallTask;
 
-import retrofit.RestAdapter;
-
 /**
  * Created by Matt on 8/13/2015.
  */
-public class MovieListFragment extends Fragment{
-    private View mThisView;
+public class InTheatersFragment extends Fragment {
+    View mThisView;
     private RecyclerView mRecyclerView;
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState){
@@ -30,6 +24,10 @@ public class MovieListFragment extends Fragment{
         mRecyclerView = (RecyclerView)mThisView.findViewById(R.id.movieList);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
+        APICallTask backgroundTask = new APICallTask(getActivity(),
+                InTheatersFragment.this,
+                "", APICallTask.SearchTypes.INTHEATERS);
+        backgroundTask.execute();
 
         return mThisView;
     }
@@ -37,4 +35,5 @@ public class MovieListFragment extends Fragment{
     public RecyclerView getmRecyclerView(){
         return mRecyclerView;
     }
+
 }

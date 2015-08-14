@@ -5,7 +5,12 @@
     <string name="action_settings">Settings</string>
 
     <string name="main_greeting">Type a movie name into the search box above to search for a movie now!</string>
+
     <!--MainFrag-->
+    <string name="intheater_btn_txt">In Theaters Now!</string>
+    <string name="searchmovie_btn_txt">Search A Movie!</string>
+
+    <!--SearchFrag-->
     <string name="movie_srchBar_hint">Search...</string>
     <string name="movie_srchBtnTxt">Search</string>
 </resources>

@@ -16,20 +16,21 @@ import android.widget.EditText;
 import com.goosewizards.codingchallenge.adapters.MyCoolAdapter;
 import com.goosewizards.codingchallenge.fragments.MainFragment;
 import com.goosewizards.codingchallenge.fragments.MovieListFragment;
+import com.goosewizards.codingchallenge.fragments.SearchMovieFragment;
 import com.goosewizards.codingchallenge.utilities.IApiMethods;
 import com.goosewizards.codingchallenge.vos.RottenResponse;
 
 import retrofit.RestAdapter;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity{
 
     public static Fragment mMainFragment = new MainFragment();
     public static MovieListFragment movieListFragment = new MovieListFragment();
     private MyCoolAdapter adapter;
-    private RecyclerView mRecyclerView;
-    EditText mSearchBar;
+//    EditText mSearchBar;
     String mSearchTxt;
     Button mSearchBtn;
+    Button mInTheatersBtn;
     public static final String API_URL = "http://api.rottentomatoes.com/api/public/v1.0";
     public static final String API_KEY = "yy5at44a4hzqqbsgnm4u47ju";
     public static final int PAGE_LIMIT = 20;
@@ -39,10 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mSearchBar = (EditText)findViewById(R.id.movieSrcBar);
-
-        mSearchBtn = (Button)findViewById(R.id.movieSrchBtn);
-        mSearchBtn.setOnClickListener(this);
+//        mSearchBar = (EditText)findViewById(R.id.movieSrcBar);
     }
 
 
@@ -55,21 +53,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-    @Override
-    public void onClick(View v) {
-        mSearchTxt = mSearchBar.getText().toString();
-//        mMainFragment = new MovieListFragment();
-        FragmentManager fragManager
-                = ((FragmentActivity) MainActivity.this).getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragManager.beginTransaction();
-        fragmentTransaction.replace(R.id.emptyFrameForFragment, movieListFragment);
-        fragmentTransaction.commit();
-
-//        mRecyclerView = (RecyclerView)findViewById(R.id.movieList);
-//        mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-
-        new BackgroundTask().execute();
-    }
+//    @Override
+//    public void onClick(View v) {
+//        FragmentManager fragManager = null;
+//        Fragment fragment = null;
+//        FragmentTransaction fragmentTransaction = null;
+//        switch(v.getId()){
+//            case R.id.mainInTheatersBtn:
+//
+//                break;
+//            case R.id.mainSrchMovieBtn:
+//                fragment = new SearchMovieFragment();
+//                fragManager = ((FragmentActivity) MainActivity.this).getSupportFragmentManager();
+//                fragmentTransaction = fragManager.beginTransaction();
+//                break;
+//        }
+//
+//        if(fragment!=null){
+//            fragmentTransaction.replace(R.id.emptyFrameForFragment, fragment);
+//            fragmentTransaction.commit();
+//        }
+//
+////        new BackgroundTask().execute();
+//    }
 
     private class BackgroundTask extends AsyncTask<Void,Void,RottenResponse> {
         RestAdapter restAdapter;
