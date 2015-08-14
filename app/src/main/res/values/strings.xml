@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">CodingChallenge</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="main_greeting">Type a movie name into the search box above to search for a movie now!</string>
+    <!--MainFrag-->
+    <string name="movie_srchBar_hint">Search...</string>
+    <string name="movie_srchBtnTxt">Search</string>
+</resources>
