@@ -63,8 +63,6 @@ public class MyCoolAdapter extends RecyclerView.Adapter<MyCoolAdapter.CustomView
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_row, null);
         CustomViewHolder viewHolder = new CustomViewHolder(view);
 
-
-
         return viewHolder;
     }
 

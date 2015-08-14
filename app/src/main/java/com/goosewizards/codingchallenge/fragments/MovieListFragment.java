@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 
 import com.goosewizards.codingchallenge.R;
+import com.goosewizards.codingchallenge.adapters.MyCoolAdapter;
 import com.goosewizards.codingchallenge.utilities.APICallTask;
 
 import retrofit.RestAdapter;
@@ -30,8 +31,17 @@ public class MovieListFragment extends Fragment{
         mRecyclerView = (RecyclerView)mThisView.findViewById(R.id.movieList);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-
         return mThisView;
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState){
+        super.onActivityCreated(savedInstanceState);
+
+        if(MyCoolAdapter.movieItemList!=null && mRecyclerView!=null){
+            MyCoolAdapter adapter = new MyCoolAdapter(getActivity(),MyCoolAdapter.movieItemList);
+            mRecyclerView.setAdapter(adapter);
+        }
     }
 
     public RecyclerView getmRecyclerView(){

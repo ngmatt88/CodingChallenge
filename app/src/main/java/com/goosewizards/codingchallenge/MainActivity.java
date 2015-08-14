@@ -53,29 +53,6 @@ public class MainActivity extends AppCompatActivity{
     }
 
 
-//    @Override
-//    public void onClick(View v) {
-//        FragmentManager fragManager = null;
-//        Fragment fragment = null;
-//        FragmentTransaction fragmentTransaction = null;
-//        switch(v.getId()){
-//            case R.id.mainInTheatersBtn:
-//
-//                break;
-//            case R.id.mainSrchMovieBtn:
-//                fragment = new SearchMovieFragment();
-//                fragManager = ((FragmentActivity) MainActivity.this).getSupportFragmentManager();
-//                fragmentTransaction = fragManager.beginTransaction();
-//                break;
-//        }
-//
-//        if(fragment!=null){
-//            fragmentTransaction.replace(R.id.emptyFrameForFragment, fragment);
-//            fragmentTransaction.commit();
-//        }
-//
-////        new BackgroundTask().execute();
-//    }
 
     private class BackgroundTask extends AsyncTask<Void,Void,RottenResponse> {
         RestAdapter restAdapter;

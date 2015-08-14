@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.gc.materialdesign.views.ButtonRectangle;
+import com.goosewizards.codingchallenge.MainActivity;
 import com.goosewizards.codingchallenge.R;
 
 import retrofit.RestAdapter;
@@ -30,6 +31,7 @@ public class MainFragment extends Fragment implements View.OnClickListener{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -57,11 +59,11 @@ public class MainFragment extends Fragment implements View.OnClickListener{
                 break;
             case R.id.mainSrchMovieBtn:
                 fragment = new SearchMovieFragment();
-
                 break;
         }
 
         if(fragment!=null){
+            MainActivity.mMainFragment = fragment;
             fragManager = ((FragmentActivity) getActivity()).getSupportFragmentManager();
             fragmentTransaction = fragManager.beginTransaction();
             fragmentTransaction.replace(R.id.emptyFrameForFragment, fragment);

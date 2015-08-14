@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.goosewizards.codingchallenge.R;
+import com.goosewizards.codingchallenge.adapters.MyCoolAdapter;
 import com.goosewizards.codingchallenge.utilities.APICallTask;
 
 /**
@@ -30,6 +31,16 @@ public class InTheatersFragment extends Fragment {
         backgroundTask.execute();
 
         return mThisView;
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState){
+        super.onActivityCreated(savedInstanceState);
+
+        if(MyCoolAdapter.movieItemList!=null && mRecyclerView!=null){
+            MyCoolAdapter adapter = new MyCoolAdapter(getActivity(),MyCoolAdapter.movieItemList);
+            mRecyclerView.setAdapter(adapter);
+        }
     }
 
     public RecyclerView getmRecyclerView(){
