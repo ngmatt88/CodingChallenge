@@ -13,4 +13,5 @@
     <!--SearchFrag-->
     <string name="movie_srchBar_hint">Search...</string>
     <string name="movie_srchBtnTxt">Search</string>
+    <string name="title_activity_movie_description">MovieDescriptionActivity</string>
 </resources>

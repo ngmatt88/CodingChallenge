@@ -51,7 +51,7 @@ public class APICallTask extends AsyncTask<Void,Void,RottenResponse>{
             try{
                 switch(mSearchType){
                     case INTHEATERS:
-                        response = methods.getInTheaters(API_KEY);
+                         response = methods.getInTheaters(API_KEY);
                         break;
                     case SEARCH:
                         response = methods.getMovies(API_KEY,mMovieTxt,PAGE_LIMIT,mPageNumber);
