@@ -12,6 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 import com.goosewizards.codingchallenge.adapters.MyCoolAdapter;
 import com.goosewizards.codingchallenge.fragments.MainFragment;
@@ -29,8 +30,7 @@ public class MainActivity extends AppCompatActivity{
     private MyCoolAdapter adapter;
 //    EditText mSearchBar;
     String mSearchTxt;
-    Button mSearchBtn;
-    Button mInTheatersBtn;
+    ImageButton mHomeBtn;
     public static final String API_URL = "http://api.rottentomatoes.com/api/public/v1.0";
     public static final String API_KEY = "yy5at44a4hzqqbsgnm4u47ju";
     public static final int PAGE_LIMIT = 20;
@@ -40,7 +40,16 @@ public class MainActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        mSearchBar = (EditText)findViewById(R.id.movieSrcBar);
+        mHomeBtn = (ImageButton) findViewById(R.id.goHomeBtn);
+        mHomeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mMainFragment = new MainFragment();
+                FragmentTransaction fragTransaction = getSupportFragmentManager().beginTransaction();
+                fragTransaction.replace(R.id.emptyFrameForFragment, mMainFragment);
+                fragTransaction.commit();
+            }
+        });
     }
 
 
