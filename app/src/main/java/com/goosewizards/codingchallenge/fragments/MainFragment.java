@@ -69,6 +69,5 @@ public class MainFragment extends Fragment implements View.OnClickListener{
             fragmentTransaction.replace(R.id.emptyFrameForFragment, fragment);
             fragmentTransaction.commit();
         }
-//        new BackgroundTask().execute();
     }
 }

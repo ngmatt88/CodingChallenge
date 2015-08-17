@@ -28,7 +28,6 @@ import java.util.List;
 public class MyCoolAdapter extends RecyclerView.Adapter<MyCoolAdapter.CustomViewHolder>{
     public static List<RottenResponse.Movies> movieItemList;
     private Context mContext;
-    private int currentIndex = 0;
 
     public MyCoolAdapter(Context context, List<RottenResponse.Movies> movieItemList){
         this.movieItemList = movieItemList;
@@ -38,7 +37,6 @@ public class MyCoolAdapter extends RecyclerView.Adapter<MyCoolAdapter.CustomView
     @Override
     public void onBindViewHolder(CustomViewHolder customViewHolder, int i) {
         RottenResponse.Movies movieItem = movieItemList.get(i);
-        currentIndex = i;
 
         //Download image using picasso library
         Picasso.with(mContext)
@@ -89,11 +87,6 @@ public class MyCoolAdapter extends RecyclerView.Adapter<MyCoolAdapter.CustomView
             Intent intent = new Intent(mContext, MovieDescriptionActivity.class);
             intent.putExtra("movie",getAdapterPosition());
             mContext.startActivity(intent);
-//            FragmentManager fragManager
-//                    = ((FragmentActivity) view.getContext()).getSupportFragmentManager();
-//            FragmentTransaction fragmentTransaction = fragManager.beginTransaction();
-//            fragmentTransaction.replace(R.id.emptyFrameForFragment, fragment);
-//            fragmentTransaction.commit();
         }
     }
 }
