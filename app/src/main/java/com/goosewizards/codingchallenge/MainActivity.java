@@ -26,15 +26,7 @@ import retrofit.RestAdapter;
 public class MainActivity extends AppCompatActivity{
 
     public static Fragment mMainFragment = new MainFragment();
-    public static MovieListFragment movieListFragment = new MovieListFragment();
-    private MyCoolAdapter adapter;
-//    EditText mSearchBar;
-    String mSearchTxt;
     ImageButton mHomeBtn;
-    public static final String API_URL = "http://api.rottentomatoes.com/api/public/v1.0";
-    public static final String API_KEY = "yy5at44a4hzqqbsgnm4u47ju";
-    public static final int PAGE_LIMIT = 20;
-    public static int mPageNumber = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,41 +52,4 @@ public class MainActivity extends AppCompatActivity{
         fragTransaction.replace(R.id.emptyFrameForFragment, mMainFragment);
         fragTransaction.commit();
     }
-
-
-
-    private class BackgroundTask extends AsyncTask<Void,Void,RottenResponse> {
-        RestAdapter restAdapter;
-
-
-        @Override
-        protected void onPreExecute(){
-            restAdapter = new RestAdapter.Builder()
-                    .setEndpoint(API_URL)
-                    .build();
-        }
-
-        @Override
-        protected RottenResponse doInBackground(Void... params){
-            IApiMethods methods = restAdapter.create(IApiMethods.class);
-            RottenResponse response = null;
-
-            try{
-                response = methods.getMovies(API_KEY,mSearchTxt,PAGE_LIMIT,mPageNumber);
-            }catch (Exception e){
-                System.out.println("THE ERROR IS:" + e.toString());
-            }
-
-            return response;
-        }
-
-        @Override
-        protected void onPostExecute(RottenResponse results){
-            adapter = new MyCoolAdapter(MainActivity.this,results.movies);
-            movieListFragment.getmRecyclerView().setAdapter(adapter);
-        }
-    }
-
-
-
 }
